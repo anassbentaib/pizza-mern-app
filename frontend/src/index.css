@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-base: "Inter", "Arial", sans-serif;
+  --seconday-base: "Bitter", "PT Serif", Georgia, serif;
+
+  --primary-color: #edf2f8;
+  --pink-color: #eb5c5e;
+  --black-color: #030303;
+  --lightGray-color: #e4e4e4;
+  --gray-color: #6b7688;
+  --brown-color: #58443a;
+  --yellow-color: #fbba00;
+  --green-color: #478f00;
+  --white-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+.app__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-text {
+  font-size: 0.9rem;
+  text-align: left;
+  color: var(--primary-color);
+  @media screen and (min-width: 2000px) {
+    font-size: 1.75rem;
+  }
+}
+.brown-text {
+  font-size: 0.9rem;
+  text-align: left;
+  color: var(--brown-color);
+  @media screen and (min-width: 2000px) {
+    font-size: 1.75rem;
+  }
+}
+.pink-text {
+  font-size: 0.9rem;
+  text-align: left;
+  color: var(--pink-color);
+  @media screen and (min-width: 2000px) {
+    font-size: 1.75rem;
+  }
+}
+
+.xl-text {
+}
+
+.md-text {
+  font-size: 1.3rem;
+  text-align: left;
+  color: var(--primary-color);
+  @media screen and (min-width: 2000px) {
+    font-size: 1.75rem;
+  }
+}
+
+.p-text:hover,
+.brown-text:hover {
+  color: var(--yellow-color);
+  transition: 0.3s ease-in-out;
+}
