@@ -1,11 +1,7 @@
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import useSignupModal from "../../hooks/useSearchModal";
 import { useCallback, useState } from "react";
-import Heading from "../Heading/Heading";
 import Input from "../Inputs/Input";
-import { FcGoogle } from "react-icons/fc";
-import Button from "../Button/Button";
-import { AiFillGithub } from "react-icons/ai";
 import Modal from "./Modal";
 
 const SignupModal = () => {
