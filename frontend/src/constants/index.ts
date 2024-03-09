@@ -1,5 +1,3 @@
-import { FaUserAlt } from "react-icons/fa";
-import { FaLock, FaPhone } from "react-icons/fa6";
 import { real4 } from "../assets";
 
 export function capitalizeFirstLetter(string: any) {
@@ -30,27 +28,6 @@ export const menuRoutes = [
   },
 ];
 
-export const authRoutes = [
-  {
-    title: "Request a call",
-    href: "about-us",
-    icon: FaPhone,
-    active: "/about-us",
-  },
-  {
-    title: "Sign in ",
-    href: "payment-delivery",
-    icon: FaLock,
-    active: "/payment-delivery",
-  },
-
-  {
-    title: "Create an account",
-    active: "/discounts",
-    href: "discounts",
-    icon: FaUserAlt,
-  },
-];
 
 export const languagesRoutes = [
   {
@@ -107,8 +84,6 @@ export const foodRoutes = [
     href: "/drinks",
   },
 ];
-
-
 
 export const images = [
   {

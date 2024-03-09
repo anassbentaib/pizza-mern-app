@@ -1,12 +1,38 @@
+import { FaLock, FaPhone } from "react-icons/fa6";
 import {
-  authRoutes,
   capitalizeFirstLetter,
   languagesRoutes,
   menuRoutes,
 } from "../../constants";
+import useSignupModal from "../../hooks/useSearchModal";
 import Container from "../Container/Container";
+import { FaUserAlt } from "react-icons/fa";
 
 const Header = () => {
+  const signupModal = useSignupModal();
+  // const signinModal = useSigInModal();
+  // const callModal = useCallModal();
+
+  const authRoutes = [
+    {
+      title: "Request a call",
+      icon: FaPhone,
+      // active: callModal.isOpen,
+    },
+    {
+      title: "Sign in ",
+      icon: FaLock,
+      // active: signinModal.isOpen,
+    },
+
+    {
+      title: "Create an account",
+      active: signupModal.isOpen,
+      icon: FaUserAlt,
+      modal: signupModal,
+    },
+  ];
+
   return (
     <div className=" min-h-[40px] pt-1 bg-black">
       <Container>
@@ -16,7 +42,7 @@ const Header = () => {
               {menuRoutes?.map((item) => (
                 <li
                   className="mx-[1rem] flex items-center app__flex p-text flex-col "
-                  key={`link-${item}`}
+                  key={`link-${item?.title}`}
                 >
                   <div />
                   <a href={`/${item?.href?.split(" ").join("-")}`}>
@@ -31,7 +57,7 @@ const Header = () => {
               {languagesRoutes?.map((item) => (
                 <li
                   className="mx-[1rem] flex items-center app__flex brown-text  flex-col"
-                  key={`link-${item} `}
+                  key={`link-${item?.title} `}
                 >
                   <a href={`/${item?.title?.split(" ").join("-")}`}>
                     {item?.title?.toUpperCase()}
@@ -41,16 +67,21 @@ const Header = () => {
             </ul>
           </div>
           <div className="space-x-1 flex">
-            {authRoutes.map((route) => (
-              <a
-                href=""
-                className=" group p-2  justify-start  cursor-pointer  app__flex p-text"
+            {authRoutes.map((item) => (
+              <div
+                key={item.title}
+                className={`group p-2 justify-start cursor-pointer app__flex p-text ${
+                  item?.modal?.isOpen ? "text-yellow-500" : "text-blue-500"
+                }`}
+                onClick={() => item?.modal?.onOpen()}
               >
-                <div className="flex items-center flex-1 px-1 ">
-                  <route.icon className="h-3 w-3 mr-2 brown-text" />
-                  {capitalizeFirstLetter(route?.title)}
+                <div className="flex items-center flex-1 px-1">
+                  {item.icon && (
+                    <item.icon className="h-3 w-3 mr-2 brown-text" />
+                  )}
+                  {capitalizeFirstLetter(item.title)}
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>

@@ -8,24 +8,24 @@ const Layout = () => {
   return (
     <div className="w-full h-full relative">
       <div
-        className="min-] relative"
+        className="min-h-screen relative max-w-full w-full  pb-10"
         style={{
           backgroundImage: `url(${backgroundImage})`,
-          minHeight: "400vh",
         }}
       >
-        {/* <div className="absolute">
-          <img src={m1} alt="Background Image" className="w-full h-full" />
-        </div>
-        <div className="absolute l">
-          <img src={tomat} alt="Background Image" className="w-full h-full" />
-        </div> */}
-        <div className="relative z-10">
-          <Header />
-          <Navbar />
-          <Menu />
-          <div className="">
-            <Outlet />
+        <div
+          className="min-screen max-w-full w-full"
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+          }}
+        >
+          <div className="relative z-10">
+            <Header />
+            <Navbar />
+            <Menu />
+            <div className="">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
