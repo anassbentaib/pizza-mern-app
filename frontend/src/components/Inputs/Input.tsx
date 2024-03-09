@@ -14,8 +14,9 @@ interface InputProps {
   icon?: boolean;
   placeholder?: string;
   FormatPrice?: boolean;
-  pattern?: RegExp;
+  pattern: RegExp;
   value?: string;
+  message: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -26,6 +27,7 @@ const Input: React.FC<InputProps> = ({
   icon,
   type,
   disabled,
+  message,
   pattern,
   required,
   register,
@@ -63,7 +65,10 @@ const Input: React.FC<InputProps> = ({
         disabled={disabled}
         {...register(id, {
           required,
-          ...(type === "email" && { pattern: pattern || /\S+@\S+\.\S+/ }),
+          pattern: {
+            value: pattern,
+            message: message,
+          },
         })}
         placeholder={placeholder}
         type={type}
@@ -84,11 +89,12 @@ const Input: React.FC<InputProps> = ({
         transition
         disabled:opacity-70
         disabled-cursor-not-allowed
+
         ${errors[id] ? "border-rose-600" : "border-black"}
         ${
           errors[id]
             ? "focus:border-rose-600"
-            : "focus:border-[#316FF6] focus:border-2"
+            : "focus:border-black focus:border"
         }
         ${errors[id] && "bg-red-200 "}
         ${errors[id] && "bg-opacity-60"}
@@ -96,6 +102,7 @@ const Input: React.FC<InputProps> = ({
 
 `}
       />
+      {errors[id] && <span className="text-sm text-rose-600">{message}</span>}
     </div>
   );
 };

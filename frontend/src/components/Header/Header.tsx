@@ -4,13 +4,14 @@ import {
   languagesRoutes,
   menuRoutes,
 } from "../../constants";
-import useSignupModal from "../../hooks/useSearchModal";
+import useSignupModal from "../../hooks/useSignupModal";
 import Container from "../Container/Container";
 import { FaUserAlt } from "react-icons/fa";
+import useSigninModal from "../../hooks/useSigninModal";
 
 const Header = () => {
   const signupModal = useSignupModal();
-  // const signinModal = useSigInModal();
+  const signinModal = useSigninModal();
   // const callModal = useCallModal();
 
   const authRoutes = [
@@ -22,7 +23,8 @@ const Header = () => {
     {
       title: "Sign in ",
       icon: FaLock,
-      // active: signinModal.isOpen,
+      active: signinModal.isOpen,
+      modal: signinModal,
     },
 
     {

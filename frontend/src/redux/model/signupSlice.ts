@@ -14,17 +14,13 @@ const signupModalSlice = createSlice({
   reducers: {
     openSignupModal: (state) => {
       state.isOpen = true;
-      console.log("🚀 ~  state.isOpen = true;:", state.isOpen);
     },
     closeSignupModal: (state) => {
       state.isOpen = false;
-      console.log("🚀 ~ state.isOpen = false;:", (state.isOpen = false));
     },
   },
 });
 
 export const { openSignupModal, closeSignupModal } = signupModalSlice.actions;
-console.log("🚀 ~ closeSignupModal:", closeSignupModal);
-console.log("🚀 ~ openSignupModal:", openSignupModal);
 
 export default signupModalSlice.reducer;

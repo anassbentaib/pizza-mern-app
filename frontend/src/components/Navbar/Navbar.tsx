@@ -1,4 +1,4 @@
-import useSignupModal from "../../hooks/useSearchModal";
+import useSignupModal from "../../hooks/useSignupModal";
 import Container from "../Container/Container";
 import Heading from "../Heading/Heading";
 import Logo from "../Logo/Logo";
