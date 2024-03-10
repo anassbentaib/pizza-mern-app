@@ -19,7 +19,7 @@ const SignupModal = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   var email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-  var password = /^.{8,20}$/;
+  var password = /^.{8,50}$/;
   var name = /^.{6,20}$/;
 
   const {

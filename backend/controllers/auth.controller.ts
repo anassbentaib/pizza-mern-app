@@ -1,6 +1,8 @@
 import User from "../model/auth.model";
 import { errorHandler } from "../utils/error";
 import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
+
 export const test = (req: any, res: any) => {
   res.json({ message: "HELLO FROM CONROLLEERS" });
 };
@@ -18,9 +20,9 @@ export const signup = async (req: any, res: any, next: any) => {
     }
 
     if (name) {
-      if (name.length < 6 || name.length > 20) {
+      if (name.length < 6 || name.length > 50) {
         return next(
-          errorHandler(400, "The name must be between 6 and 20 characters")
+          errorHandler(400, "The name must be between 6 and 50 characters")
         );
       }
       if (name.includes(" ")) {
@@ -53,6 +55,47 @@ export const signup = async (req: any, res: any, next: any) => {
     await newUser.save();
     res.json("signup successfully");
   } catch (error: any) {
+    return next(error);
+  }
+};
+
+export const signin = async (req: any, res: any, next: any) => {
+  const { email, password } = req.body;
+
+  if (!email || !password || email === "" || password === "") {
+    return next(errorHandler(400, "All fields are required"));
+  }
+  try {
+    const userExist = await User.findOne({
+      email: email,
+    });
+    if (!userExist) {
+      return next(errorHandler(400, "Invalid credentials "));
+    }
+    const isPasswordCorrect = await bcryptjs.compare(
+      password,
+      userExist.password
+    );
+    if (!isPasswordCorrect) {
+      return next(errorHandler(400, "Invalid credentials"));
+    }
+    const token = await jwt.sign(
+      {
+        id: userExist?._id,
+      },
+      process.env.JWT_SECRET_KEY!
+    );
+    const userObject = userExist?.toJSON();
+    const { password: pass, ...rest } = userObject || {};
+
+    res
+      .status(200)
+      .cookie("access_toke", token, {
+        httpOnly: true,
+      })
+      .json(rest);
+    res.json("Signin successful");
+  } catch (error) {
     return next(error);
   }
 };

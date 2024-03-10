@@ -14,7 +14,7 @@ const SigninModal = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   var email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-  var password = /^.{8,20}$/;
+  var password = /^.{8,50}$/;
 
   const {
     register,
@@ -115,8 +115,7 @@ const SigninModal = () => {
     <Modal
       disabled={loading}
       isOpen={signinModal.isOpen}
-      title="Create your account
-      "
+      title="Login to your account"
       actionLabel="Continue"
       onClose={signinModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
