@@ -4,19 +4,14 @@ import { useCallback, useState } from "react";
 import Input from "../Inputs/Input";
 import Modal from "./Modal";
 import axios from "axios";
-import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-} from "@chakra-ui/react";
+import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 import useSigninModal from "../../hooks/useSigninModal";
 
 const SignupModal = () => {
   const signupModal = useSignupModal();
   const signinModal = useSigninModal();
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   var email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   var password = /^.{8,50}$/;
@@ -25,6 +20,7 @@ const SignupModal = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
@@ -39,17 +35,19 @@ const SignupModal = () => {
   }, [signupModal]);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setLoading(true);
-
+    setErrorMessage(null);
     try {
       await axios.post("/api/auth/signup", data);
 
       signupModal.onClose();
+      reset();
       signinModal.onOpen();
     } catch (error: any) {
       console.error(error);
       setErrorMessage(error?.response?.data?.message);
     } finally {
       setLoading(false);
+      setErrorMessage(null);
     }
   };
   const bodyContent = (

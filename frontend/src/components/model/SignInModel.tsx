@@ -6,12 +6,19 @@ import axios from "axios";
 import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 import useSigninModal from "../../hooks/useSigninModal";
 import useSignupModal from "../../hooks/useSignupModal";
+import { useDispatch } from "react-redux";
+import {
+  signInFailure,
+  signInSuccess,
+  signinStart,
+} from "../../redux/user/userSlice";
 
 const SigninModal = () => {
   const signinModal = useSigninModal();
   const signupModal = useSignupModal();
+  const dispatch = useDispatch();
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   var email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   var password = /^.{8,50}$/;
@@ -20,6 +27,7 @@ const SigninModal = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FieldValues>({
     defaultValues: {
       email: "",
@@ -32,16 +40,22 @@ const SigninModal = () => {
   }, [signinModal]);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setLoading(true);
+    setErrorMessage(null);
 
     try {
-      await axios.post("/api/auth/signin", data);
+      dispatch(signinStart());
+      const response = await axios.post("/api/auth/signin", data);
+      const result = await response.data;
+      dispatch(signInSuccess(result));
 
       signinModal.onClose();
+      reset();
     } catch (error: any) {
-      console.error(error);
+      dispatch(signInFailure(error?.response?.data?.message));
       setErrorMessage(error?.response?.data?.message);
     } finally {
       setLoading(false);
+      setErrorMessage(null);
     }
   };
   const bodyContent = (

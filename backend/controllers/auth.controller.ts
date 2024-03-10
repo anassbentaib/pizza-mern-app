@@ -94,7 +94,6 @@ export const signin = async (req: any, res: any, next: any) => {
         httpOnly: true,
       })
       .json(rest);
-    res.json("Signin successful");
   } catch (error) {
     return next(error);
   }
