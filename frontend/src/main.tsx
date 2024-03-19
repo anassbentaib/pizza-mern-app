@@ -7,6 +7,7 @@ import store, { persistor } from "./redux/store.ts";
 import SignupModal from "./components/model/SignupModal.tsx";
 import SigninModal from "./components/model/SignInModel.tsx";
 import { PersistGate } from "redux-persist/integration/react";
+import CallModal from "./components/model/CallsModal.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <PersistGate persistor={persistor}>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ChakraProvider>
         <App />
         <SignupModal />
+        <CallModal />
         <SigninModal />
       </ChakraProvider>
     </Provider>

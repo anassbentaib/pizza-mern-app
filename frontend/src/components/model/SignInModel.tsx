@@ -55,7 +55,6 @@ const SigninModal = () => {
       setErrorMessage(error?.response?.data?.message);
     } finally {
       setLoading(false);
-      setErrorMessage(null);
     }
   };
   const bodyContent = (

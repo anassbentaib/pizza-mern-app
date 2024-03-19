@@ -5,6 +5,7 @@ function App() {
   return (
     <Router>
       <Routes>
+
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<About />} />

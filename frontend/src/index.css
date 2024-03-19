@@ -48,28 +48,85 @@
   }
 }
 .pink-text {
-  font-size: 0.9rem;
   text-align: left;
   color: var(--pink-color);
-  @media screen and (min-width: 2000px) {
-    font-size: 1.75rem;
-  }
-}
-
-.xl-text {
 }
 
 .md-text {
-  font-size: 1.3rem;
   text-align: left;
   color: var(--primary-color);
-  @media screen and (min-width: 2000px) {
-    font-size: 1.75rem;
-  }
 }
 
 .p-text:hover,
 .brown-text:hover {
   color: var(--yellow-color);
   transition: 0.3s ease-in-out;
+}
+
+.heading-font {
+  font-size: 0.8rem;
+}
+
+@media (min-width: 640px) {
+  .heading-font {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .heading-font {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading-font {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heading-font {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .heading-font {
+    font-size: 1.5rem;
+  }
+}
+
+.subHeading-font {
+  font-size: 0.7rem;
+}
+
+@media (min-width: 640px) {
+  .subHeading-font {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .subHeading-font {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .subHeading-font {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .subHeading-font {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .subHeading-font {
+    font-size: 1.3rem;
+  }
 }

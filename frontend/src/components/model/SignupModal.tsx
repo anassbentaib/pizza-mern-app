@@ -12,6 +12,7 @@ const SignupModal = () => {
   const signinModal = useSigninModal();
 
   const [errorMessage, setErrorMessage] = useState(null);
+  console.log("🚀 ~ SignupModal ~ errorMessage:", errorMessage);
   const [loading, setLoading] = useState(false);
   var email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   var password = /^.{8,50}$/;
@@ -47,7 +48,6 @@ const SignupModal = () => {
       setErrorMessage(error?.response?.data?.message);
     } finally {
       setLoading(false);
-      setErrorMessage(null);
     }
   };
   const bodyContent = (

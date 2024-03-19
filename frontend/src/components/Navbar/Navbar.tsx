@@ -16,7 +16,7 @@ const Navbar = () => {
           subTitle="from all operators"
           span="*7447 "
         />
-        <div>
+        <div className="hidden md:flex">
           <Logo />
         </div>
         <div>

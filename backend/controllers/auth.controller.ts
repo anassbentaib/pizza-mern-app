@@ -3,10 +3,6 @@ import { errorHandler } from "../utils/error";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export const test = (req: any, res: any) => {
-  res.json({ message: "HELLO FROM CONROLLEERS" });
-};
-
 export const signup = async (req: any, res: any, next: any) => {
   const { name, email, password } = req.body;
 
@@ -15,6 +11,10 @@ export const signup = async (req: any, res: any, next: any) => {
   }
   try {
     const userExist = await User.findOne({ email: email });
+    const nameExist = await User.findOne({ name: name });
+    if (nameExist) {
+      return next(errorHandler(401, "the name already taken!"));
+    }
     if (userExist) {
       return next(errorHandler(401, "the email already taken!"));
     }
@@ -23,17 +23,6 @@ export const signup = async (req: any, res: any, next: any) => {
       if (name.length < 6 || name.length > 50) {
         return next(
           errorHandler(400, "The name must be between 6 and 50 characters")
-        );
-      }
-      if (name.includes(" ")) {
-        return next(errorHandler(400, "The name cannot contain spaces"));
-      }
-      if (name !== name.toLowerCase()) {
-        return next(errorHandler(400, "The name must be lowercase"));
-      }
-      if (!name.match(/^[a-zA-Z0-9]+$/)) {
-        return next(
-          errorHandler(400, "The name can only contain letters and numbers")
         );
       }
     }

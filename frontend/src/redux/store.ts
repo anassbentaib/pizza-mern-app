@@ -5,11 +5,14 @@ import userReducers from "./user/userSlice";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import persistStore from "redux-persist/es/persistStore";
+import callReducer from './model/CallSlice'
 
 const rootReducer = combineReducers({
   signupModal: signupReducer,
   user: userReducers,
   signinModal: signinReducer,
+  callModal: callReducer,
+
 });
 const persistsConfig = {
   key: "root",

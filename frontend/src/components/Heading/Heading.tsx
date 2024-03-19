@@ -14,10 +14,12 @@ const Heading: React.FC<HeadingProps> = ({ title, subTitle, center, span }) => {
     
     `}
     >
-      <div className="text-2xl font-bold">{title}</div>
+      <div className="heading-font font-bold">{title}</div>
       <div className="font-semibold  mt-2 flex items-center">
-        <span className="pink-text font-semibold mr-2">{span}</span>
-        <span>{subTitle}</span>
+        <span className="pink-text  subHeading-font font-semibold mr-2">
+          {span}
+        </span>
+        <span className="subHeading-font">{subTitle}</span>
       </div>
     </div>
   );

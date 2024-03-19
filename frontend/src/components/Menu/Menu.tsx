@@ -12,8 +12,8 @@ const Menu = () => {
         <ul className="flex justify-between align-center pointer">
           {foodRoutes?.map((item) => (
             <li
-              className="flex items-center app__flex md-text flex-col  "
-              key={`link-${item}`}
+              className="flex items-center subHeading-font md-text flex-col font-semibold  "
+              key={item.title}
             >
               <div />
               <a

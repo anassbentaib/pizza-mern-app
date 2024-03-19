@@ -1,4 +1,14 @@
-import { real4 } from "../assets";
+import {
+  image1,
+  image2,
+  image3,
+  image4,
+  real1,
+  real2,
+  real3,
+  real4,
+  real5,
+} from "../assets";
 
 export function capitalizeFirstLetter(string: any) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -27,7 +37,6 @@ export const menuRoutes = [
     href: "contacts",
   },
 ];
-
 
 export const languagesRoutes = [
   {
@@ -85,13 +94,32 @@ export const foodRoutes = [
   },
 ];
 
+export const featuredData = [
+  {
+    title: "Only fresh and quality products",
+    img: image1,
+  },
+  {
+    title: "Only fresh and quality products",
+    img: image2,
+  },
+  {
+    title: "Only fresh and quality products",
+    img: image3,
+  },
+  {
+    title: "Only fresh and quality products",
+    img: image4,
+  },
+];
+
 export const images = [
   {
-    image: real4,
+    image: real3,
     link: "/pizza",
   },
   {
-    image: real4,
+    image: real1,
     link: "/sushi",
   },
   {
@@ -99,11 +127,69 @@ export const images = [
     link: "/soups",
   },
   {
-    image: real4,
+    image: real2,
     link: "/drinks",
   },
   {
-    image: real4,
+    image: real5,
     link: "/salads",
   },
+];
+
+export const display = {
+  base: "block",
+  sm: "block",
+  md: "block",
+
+  lg: "none",
+  xl: "none",
+};
+export const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
+
+export const imagesSlice = [
+  {
+    image: real1,
+    title: "Special offer",
+    span: "For a big company  as a gift!",
+    description:
+      "Every seventh pizza as a gift Every seventh pizza as a gift!!",
+    link: "/pizza",
+  },
+  {
+    image: real2,
+    title: "mix sushi",
+    span: "mix sushi rolls mint leaves isolated",
+    description: "lime slice and mint leaves isolated & mix sushi rolls ",
+    link: "/sushe",
+  },
+  {
+    image: real3,
+    title: "soup set mushroom",
+    span: "soup with spices & mint leaves isolated",
+    description: "lime slice and mint leaves isolated and soup with spices",
+    link: "/pizza",
+  },
+  {
+    image: real4,
+    title: "New in Dadim",
+    span: "“Caesar” salad with trout and heart",
+    description: "Food for the mind and heart salad with trout",
+    link: "/salads",
+  },
+  {
+    image: real5,
+    title: "lemonade drink",
+    span: "lime slice and mint leaves isolated",
+    description: "lime slice and mint leaves isolated lime slice",
+    link: "/salads",
+  },
+  {
+    image: real4,
+    title: "lemonade drink ",
+    span: "lime slice mint leaves isolated",
+    description: "lime slice and mint leaves isolated lime slice",
+    link: "/salads",
+  },
+  // Add more objects for other images
 ];
