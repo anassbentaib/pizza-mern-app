@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { closeSignupModal, openSignupModal } from "../redux/model/signupSlice";
+import { closeSignupModal, openSignupModal } from "../redux/modals/signupSlice";
 
 const useSignupModal = () => {
   const dispatch = useDispatch();

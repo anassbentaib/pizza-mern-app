@@ -15,8 +15,14 @@ import menu4 from "./menuimg.png";
 import Logo1 from "./logo_og.png";
 import Logo2 from "./logo2.png";
 import Logo3 from "./logo3.png";
+import notFoundSvg from "./logout.svg";
+import status from './statusCardbg.png'
+
+
 export {
   Logo2,
+  status,
+  notFoundSvg,
   Logo3,
   Logo1,
   image1,

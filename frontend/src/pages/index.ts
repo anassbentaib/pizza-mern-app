@@ -1,6 +1,9 @@
-import Home from "./Home/Home";
+import Home from "./Home";
 import Layout from "../components/Layout/Layout";
-import Contact from "./Contact/Contact";
-import About from "./About/About";
+import Contact from "./Contact";
+import About from "./About";
 import Error from "./error";
-export { Home, Layout, About, Contact, Error };
+import Profile from "./profile";
+import Admin from "./Admin";
+
+export { Home, Layout, About, Contact, Error, Profile, Admin };

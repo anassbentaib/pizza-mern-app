@@ -1,18 +1,19 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import signupReducer from "./model/signupSlice";
-import signinReducer from "./model/signinSlice";
+import signupReducer from "./modals/signupSlice";
+import signinReducer from "./modals/signinSlice";
 import userReducers from "./user/userSlice";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import persistStore from "redux-persist/es/persistStore";
-import callReducer from './model/CallSlice'
+import callReducer from "./modals/CallSlice";
+import profileReducer from "./modals/profileSlice";
 
 const rootReducer = combineReducers({
   signupModal: signupReducer,
   user: userReducers,
   signinModal: signinReducer,
   callModal: callReducer,
-
+  profileModal: profileReducer,
 });
 const persistsConfig = {
   key: "root",

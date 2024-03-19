@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { closeSigninModal, openSigninModal } from "../redux/model/signinSlice";
+import { closeSigninModal, openSigninModal } from "../redux/modals/signinSlice";
 
 const useSigninModal = () => {
   const dispatch = useDispatch();

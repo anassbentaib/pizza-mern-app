@@ -4,8 +4,8 @@
 @tailwind utilities;
 
 :root {
-  --font-base: "Inter", "Arial", sans-serif;
   --seconday-base: "Bitter", "PT Serif", Georgia, serif;
+  --font-base: "Inter", "Arial", sans-serif;
 
   --primary-color: #edf2f8;
   --pink-color: #eb5c5e;
@@ -109,24 +109,24 @@
 
 @media (min-width: 768px) {
   .subHeading-font {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
   .subHeading-font {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 1280px) {
   .subHeading-font {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 1536px) {
   .subHeading-font {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 }

@@ -1,5 +1,3 @@
-"use client";
-
 interface HeadingProps {
   title?: string;
   subTitle?: string;
@@ -14,7 +12,12 @@ const Heading: React.FC<HeadingProps> = ({ title, subTitle, center, span }) => {
     
     `}
     >
-      <div className="heading-font font-bold">{title}</div>
+      <div
+        className="heading-font font-bold leading-10"
+        style={{ fontFamily: "var(--seconday-base)" }}
+      >
+        {title}
+      </div>
       <div className="font-semibold  mt-2 flex items-center">
         <span className="pink-text  subHeading-font font-semibold mr-2">
           {span}

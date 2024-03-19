@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { closeCallModal, openCallModal } from "../redux/model/CallSlice";
+import { closeCallModal, openCallModal } from "../redux/modals/CallSlice";
 
 const useCallModal = () => {
   const dispatch = useDispatch();
