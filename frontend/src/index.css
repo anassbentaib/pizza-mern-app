@@ -25,12 +25,6 @@
   scroll-behavior: smooth;
 }
 
-.app__flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .p-text {
   font-size: 0.9rem;
   text-align: left;
@@ -129,4 +123,40 @@
   .subHeading-font {
     font-size: 1rem;
   }
+}
+
+.app_flex {
+  display: flex;
+  align-items: center;
+}
+.app_justify {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-hover {
+  margin-left: 0.75rem;
+  padding: 0.6rem;
+  border-radius: 100%;
+}
+.icon-hover:hover {
+  background-color: rgba(229, 231, 235, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-react-quill .ql-toolbar.ql-snow {
+  border-bottom: 1px solid #030303;
+}
+
+.custom-react-quill .ql-toolbar .ql-picker {
+  color: #030303;
+  border-color: #030303;
+}
+
+.custom-react-quill .ql-toolbar .ql-picker-options {
+  border-color: #030303;
 }

@@ -1,87 +1,86 @@
-  import React from "react";
-  import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-  import { BiDollar } from "react-icons/bi";
-  import { PiWarningCircleBold } from "react-icons/pi";
+import React from "react";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { BiDollar } from "react-icons/bi";
+import { PiWarningCircleBold } from "react-icons/pi";
 
-  interface InputProps {
-    id: string;
-    text?: string;
-    type?: string;
-    disabled?: boolean;
-    required?: boolean;
-    register: UseFormRegister<FieldValues>;
-    errors: FieldErrors;
-    icon?: boolean;
-    placeholder?: string;
-    FormatPrice?: boolean;
-    pattern: RegExp;
-    value?: string;
-    message: string;
-  }
+interface InputProps {
+  id: string;
+  text?: string;
+  type?: string;
+  disabled?: boolean;
+  required?: boolean;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors;
+  icon?: boolean;
+  placeholder?: string;
+  FormatPrice?: boolean;
+  pattern: RegExp;
+  value?: string;
+  message: string;
+}
 
-  const Input: React.FC<InputProps> = ({
-    id,
-    text,
-    placeholder,
-    value,
-    icon,
-    type,
-    disabled,
-    message,
-    pattern,
-    required,
-    register,
-    FormatPrice,
+const Input: React.FC<InputProps> = ({
+  id,
+  text,
+  placeholder,
+  value,
+  icon,
+  type,
+  disabled,
+  message,
+  pattern,
+  required,
+  register,
+  FormatPrice,
 
-    errors,
-  }) => {
-    return (
-      <div className="w-full relative text-black">
-        {FormatPrice && (
-          <BiDollar
-            size={18}
-            className="text-neutral-700 absolute top-11 left-1"
-          />
-        )}
-        {errors[id] && icon && (
-          <PiWarningCircleBold
-            size={20}
-            className="absolute top-8 right-2 text-red-600 mt-2"
-          />
-        )}
-        <label
-          htmlFor={text}
-          className={`
-              ${errors[id] && "text-red-600 placeholder:text-red-600"}
-    text-start  font-semibold text-[14px] text-gray-900
-    ${errors[id] ? "text-rose-600" : "text-black"}
+  errors,
+}) => {
+  return (
+    <div className="w-full relative text-blackColor">
+      {FormatPrice && (
+        <BiDollar
+          size={20}
+          className="text-neutral-700 absolute top-3 left-1"
+        />
+      )}
+      {errors[id] && icon && (
+        <PiWarningCircleBold
+          size={20}
+          className="absolute top-7 right-2 text-errorColor mt-2"
+        />
+      )}
+      <label
+        htmlFor={text}
+        className={`
+              ${errors[id] && "text-errorColor placeholder:text-errorColor"}
+    text-start  font-semibold text-14 text-gray-900
+    ${errors[id] ? "text-errorColor" : "text-black"}
     `}
-        >
-          {text}
-        </label>
-        <input
-          id={id}
-          value={value}
-          disabled={disabled}
-          {...register(id, {
-            required,
-            pattern: {
-              value: pattern,
-              message: message,
-            },
-          })}
-          placeholder={placeholder}
-          type={type}
-          className={`
-          mt-2
+      >
+        {text}
+      </label>
+      <input
+        id={id}
+        value={value}
+        disabled={disabled}
+        {...register(id, {
+          required,
+          pattern: {
+            value: pattern,
+            message: message,
+          },
+        })}
+        placeholder={placeholder}
+        type={type}
+        className={`
           peer
           w-full
           text-sm
-          p-2
+          p-3
           bg-white
           border
           placeholder-gray-500       
-          ${errors[id] && "placeholder-rose-600"}
+          ${errors[id] && "placeholder-errorColor"}
           ${FormatPrice && "pl-6 text-md font-semibold"}
 
           font-500
@@ -90,21 +89,21 @@
           disabled:opacity-70
           disabled-cursor-not-allowed
 
-          ${errors[id] ? "border-rose-600" : "border-black"}
+          ${errors[id] ? "border-errorColor" : "border-black"}
           ${
             errors[id]
-              ? "focus:border-rose-600"
+              ? "focus:border-errorColor"
               : "focus:border-black focus:border"
           }
-          ${errors[id] && "bg-red-200 "}
+          ${errors[id] && "bg-errorColor "}
           ${errors[id] && "bg-opacity-60"}
           ${errors[id] && "text-black"}
 
   `}
-        />
-        {errors[id] && <span className="text-sm text-rose-600">{message}</span>}
-      </div>
-    );
-  };
+      />
+      {errors[id] && <span className="text-sm text-errorColor">{message}</span>}
+    </div>
+  );
+};
 
-  export default Input;
+export default Input;

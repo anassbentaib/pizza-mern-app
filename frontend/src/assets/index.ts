@@ -17,10 +17,11 @@ import Logo2 from "./logo2.png";
 import Logo3 from "./logo3.png";
 import notFoundSvg from "./logout.svg";
 import status from './statusCardbg.png'
-
+import user_logo from "./user_logo.avif"
 
 export {
   Logo2,
+  user_logo,
   status,
   notFoundSvg,
   Logo3,

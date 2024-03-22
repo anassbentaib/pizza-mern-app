@@ -1,5 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { About, Contact, Home, Layout, Error, Profile, Admin } from "./pages";
+import {
+  About,
+  Contact,
+  Home,
+  Layout,
+  Error,
+  Profile,
+  AdminDashboardLayout,
+} from "./pages";
 
 function App() {
   return (
@@ -12,7 +20,12 @@ function App() {
           <Route path="*" element={<Error />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
-        <Route path="/profile/admin_dashboard" element={<Admin />} />
+
+    
+        <Route
+          path="/profile/admin_dashboard"
+          element={<AdminDashboardLayout />}
+        />
       </Routes>
     </Router>
   );

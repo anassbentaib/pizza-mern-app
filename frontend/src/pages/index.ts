@@ -4,6 +4,6 @@ import Contact from "./Contact";
 import About from "./About";
 import Error from "./error";
 import Profile from "./profile";
-import Admin from "./Admin";
+import AdminDashboardLayout from "../components/AdminDashboard/AdminDashboardLayout";
 
-export { Home, Layout, About, Contact, Error, Profile, Admin };
+export { Home, Layout, About, Contact, Error, Profile, AdminDashboardLayout };

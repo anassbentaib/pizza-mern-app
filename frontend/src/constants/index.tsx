@@ -9,6 +9,17 @@ import {
   real4,
   real5,
 } from "../assets";
+import {
+  HomeOutlined,
+  ShoppingCartOutlined,
+  Groups2Outlined,
+  ReceiptLongOutlined,
+  PublicOutlined,
+  PointOfSaleOutlined,
+  TodayOutlined,
+  CalendarMonthOutlined,
+  PieChartOutlined,
+} from "@mui/icons-material";
 
 export function capitalizeFirstLetter(string: any) {
   return string?.charAt(0)?.toUpperCase() + string?.slice(1);
@@ -146,7 +157,6 @@ export const display = {
 };
 export const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
-
 export const imagesSlice = [
   {
     image: real1,
@@ -194,4 +204,57 @@ export const imagesSlice = [
   // Add more objects for other images
 ];
 
-
+export const navItems = [
+  {
+    text: "Dashboard",
+    icon: <HomeOutlined />,
+  },
+  {
+    text: "Client Facing",
+    icon: null,
+  },
+  {
+    text: "Products",
+    icon: <ShoppingCartOutlined />,
+  },
+  {
+    text: "Customers",
+    icon: <Groups2Outlined />,
+  },
+  {
+    text: "Transactions",
+    icon: <ReceiptLongOutlined />,
+  },
+  {
+    text: "Geography",
+    icon: <PublicOutlined />,
+  },
+  {
+    text: "Sales",
+    icon: null,
+  },
+  {
+    text: "Overview",
+    icon: <PointOfSaleOutlined />,
+  },
+  {
+    text: "Daily",
+    icon: <TodayOutlined />,
+  },
+  {
+    text: "Monthly",
+    icon: <CalendarMonthOutlined />,
+  },
+  {
+    text: "Breakdown",
+    icon: <PieChartOutlined />,
+  },
+  {
+    text: "Overview",
+    icon: <PointOfSaleOutlined />,
+  },
+  {
+    text: "Daily",
+    icon: <TodayOutlined />,
+  },
+];
