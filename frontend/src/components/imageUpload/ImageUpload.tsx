@@ -9,7 +9,7 @@ const uploadPreset = "dadpy0jh";
 interface ImageUploadProps {
   onChange: (values: string[]) => void;
   values: string[];
-  handleImageDelete: () => void;
+  handleImageDelete: (indexToDelete: number) => void;
   isImageUploaded: any;
   setImageUploaded: any;
 }
@@ -88,13 +88,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       <div className="relative h-full ">
         {values && values.length > 0 && (
           <div className="grid gap-3 grid-cols-2 sm:grid-cols-3  xl:grid-cols-4 ">
-            {values.map((url) => (
+            {values.map((url, index) => (
               <div key={url} className="relative rounded-md overflow-hidden">
                 <div
                   className="z-10 absolute top-4 right-0 cursor-pointer 
                   text-errorColor
                   "
-                  onClick={handleImageDelete}
+                  onClick={() => handleImageDelete(index)}
                 >
                   <FaTrashCan className="h-3 w-3" color="" />
                 </div>

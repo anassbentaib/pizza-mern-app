@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: String,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const User = mongoose.model("User", userSchema);

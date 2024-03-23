@@ -1,7 +1,7 @@
 import Heading from "../../Heading/Heading";
-import Button from "../../Button/Button";
 import useProfileModal from "../../../hooks/useProfileModal";
 import { format } from "date-fns";
+import Button from "@/components/Button/Button";
 
 interface UserInfoCardProps {
   currentUser: any;
@@ -19,7 +19,7 @@ const UserInfoCard = ({ currentUser }: UserInfoCardProps) => {
     },
     {
       title: "Birthday:",
-      result: format(new Date(currentUser?.birthdate), "yyyy-MM-dd"),
+      result: currentUser?.birthdate || "",
     },
     {
       title: "phone number:",

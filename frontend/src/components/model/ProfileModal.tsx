@@ -1,5 +1,5 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import Input from "../Inputs/Input";
 import Modal from "./Modal";
 import axios from "axios";
@@ -19,7 +19,6 @@ const ProfileModal = () => {
   const { currentUser } = useSelector((state: any) => state.user);
 
   const [errorMessage, setErrorMessage] = useState<any | null>(null);
-  console.log("🚀 ~ ProfileModal ~ errorMessage:", errorMessage);
   const [loading, setLoading] = useState(false);
   var email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   var password = /^.{8,50}$/;
@@ -34,7 +33,7 @@ const ProfileModal = () => {
       email: currentUser?.email || "",
       name: currentUser?.name || "",
       phone: currentUser?.phone || "",
-      close: currentUser?.birthdate || "",
+      birthdate: currentUser?.birthdate || "",
     },
   });
 
@@ -65,9 +64,8 @@ const ProfileModal = () => {
       toast.success("User updated successfully");
       reset();
     } catch (error: any) {
-      dispatch(updateFailure(error?.response?.data?.message));
+      dispatch(updateFailure(error));
       setErrorMessage(error?.response?.data?.message);
-      toast.error(error?.response?.data?.message);
     } finally {
       setLoading(false);
     }
@@ -112,6 +110,7 @@ const ProfileModal = () => {
         message="Minimum 12 characters"
       />
       {/* hhhdhdhh@ddd.vd */}
+      
       <Input
         id="birthdate"
         text="Your birthdate"

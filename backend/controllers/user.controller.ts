@@ -3,7 +3,6 @@ import { errorHandler } from "../utils/error";
 import bcryptjs from "bcryptjs";
 
 export const update = async (req: any, res: any, next: any) => {
-  console.log("🚀 ~ update ~ req:", req.body);
   try {
     if (req.user.id !== req.params.userId) {
       return next(errorHandler(403, "You are not allowed to update this user"));

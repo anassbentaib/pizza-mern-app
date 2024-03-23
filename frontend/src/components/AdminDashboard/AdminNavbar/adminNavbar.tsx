@@ -16,7 +16,7 @@ const AdminNavbar = ({ setIsSidebarOpen, isSidebarOpen }: SidebarProps) => {
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         />
         <div className="w-full min-w-100 md:min-w-300">
-          <SearchInput id="search" placeholder="Search..." icon />
+          <SearchInput id="search" placeholder="Search..."  />
         </div>
       </div>
       <div className="app_flex text-primaryColor">

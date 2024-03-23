@@ -1,6 +1,6 @@
 import Heading from "@/components/Heading/Heading";
 import Container from "../Container/Container";
-import { FieldValues, set, useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -15,13 +15,11 @@ import axios from "axios";
 import { toast } from "sonner";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
-// name type description price image
-
-const CreatePost = () => {
+const CreateProduct = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<any | null>("");
-  console.log("🚀 ~ CreatePost ~ errorMessage:", errorMessage);
   const [isImageUploaded, setImageUploaded] = useState(false);
   var regExp = /^.{1,}$/;
 
@@ -38,6 +36,8 @@ const CreatePost = () => {
       description: "",
       type: "",
       price: null,
+      rating: null,
+      supply: null,
     },
   });
   const setCustomValue = (id: string, value: any) => {
@@ -49,7 +49,11 @@ const CreatePost = () => {
   };
   const imageSrc = watch("imageSrc");
   const description = watch("description");
-
+  const handleImageDelete = (indexToDelete: number) => {
+    const updatedUrls = [...imageSrc];
+    updatedUrls.splice(indexToDelete, 1);
+    setCustomValue("imageSrc", imageSrc);
+  };
   const onSubmit = async (data: any) => {
     setLoading(true);
     setErrorMessage(null);
@@ -66,10 +70,10 @@ const CreatePost = () => {
         setErrorMessage("Please wait for image upload");
         setLoading(false);
       } else {
-        setErrorMessage(null)
+        setErrorMessage(null);
         try {
-          await axios.post(`/api/posts/create-post`, data);
-          toast.success("Post created successfully");
+          await axios.post(`/api/products/create-product`, data);
+          toast.success("Product created successfully");
         } catch (error: any) {
           setErrorMessage(error?.data?.response?.message);
         } finally {
@@ -82,10 +86,10 @@ const CreatePost = () => {
   return (
     <Container>
       <div>
-        <Heading title="Create post" subTitle="Add a new post." />
-        <div className="p-3 max-w-3xl mx-auto min-h-screen">
+        <Heading title="Create product" subTitle="Add a new product." />
+        <div className="py-3 max-w-3xl mx-auto min-h-screen">
           <form
-            className="flex flex-col gap-4 bg-gray-200 p-4"
+            className="flex flex-col gap-4 bg-gray-200 p-4 shadow-customShadow "
             onSubmit={handleSubmit(onSubmit)}
           >
             <div className="grid gap-3 grid-cols-1 md:grid-cols-2">
@@ -114,10 +118,36 @@ const CreatePost = () => {
                 />
               </div>
             </div>
+            <div className="grid gap-3 grid-cols-1 md:grid-cols-2">
+              <div className="w-full">
+                <Input
+                  id="rating"
+                  type="text"
+                  register={register}
+                  placeholder="Your rating"
+                  errors={errors}
+                  required
+                  pattern={regExp}
+                  message="Minimum 1 character or number"
+                />
+              </div>
+              <div className="w-full">
+                <Input
+                  id="supply"
+                  type="supply"
+                  register={register}
+                  placeholder="Your supply"
+                  errors={errors}
+                  required
+                  pattern={regExp}
+                  message="Minimum 1 character or number"
+                />
+              </div>
+            </div>
             <div className="">
               <Input
                 id="price"
-                type="number"
+                type="text"
                 placeholder="Your price"
                 errors={errors}
                 register={register}
@@ -130,17 +160,17 @@ const CreatePost = () => {
             <ImageUpload
               onChange={(value) => setCustomValue("imageSrc", value)}
               values={imageSrc}
-              handleImageDelete={() => {}}
+              handleImageDelete={handleImageDelete}
               setImageUploaded={setImageUploaded}
               isImageUploaded={isImageUploaded}
             />
 
-            <ReactQuill
+            <Textarea
               id="description"
-              theme="snow"
               placeholder="Write something..."
-              className="h-72 pb-10  text-blackColor border border-blackColor custom-react-quill placeholder:text-blackColor"
-              onChange={(value) => setCustomValue("description", value)}
+              className="h-72 pb-10 rounded-none border border-black focus:outline-transparent focus:border-transparent"
+              name="description"
+              onChange={(e) => setCustomValue("description", e.target.value)}
               value={description}
             />
             <Button
@@ -165,4 +195,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default CreateProduct;

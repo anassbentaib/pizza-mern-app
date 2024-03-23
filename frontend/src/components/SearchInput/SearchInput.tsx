@@ -1,23 +1,14 @@
 import React from "react";
-import { FaSearch } from "react-icons/fa";
 
 interface InputProps {
   id: string;
-  icon?: boolean;
   placeholder?: string;
   value?: string;
 }
 
-const SearchInput: React.FC<InputProps> = ({
-  id,
-  placeholder,
-  value,
-  icon,
-}) => {
+const SearchInput: React.FC<InputProps> = ({ id, placeholder, value }) => {
   return (
-    <div className="w-full relative text-600">
-      {icon && <FaSearch size={17} className="absolute top-18 right-2 " />}
-
+    <div className="w-full relative">
       <input
         id={id}
         value={value}
@@ -29,11 +20,12 @@ const SearchInput: React.FC<InputProps> = ({
         w-full
         text-sm
         p-2
-        bg-primaryColor
+        bg-whiteColor
         border
         font-500
         outline-none
         transition
+        text-black
         disabled:opacity-70
         disabled-blackColor-not-allowed
          border-black

@@ -125,6 +125,7 @@
   }
 }
 
+
 .app_flex {
   display: flex;
   align-items: center;
@@ -147,16 +148,15 @@
   align-items: center;
   justify-content: center;
 }
-
-.custom-react-quill .ql-toolbar.ql-snow {
-  border-bottom: 1px solid #030303;
+.button-hover {
+  padding: 0.4rem;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
-
-.custom-react-quill .ql-toolbar .ql-picker {
-  color: #030303;
-  border-color: #030303;
-}
-
-.custom-react-quill .ql-toolbar .ql-picker-options {
-  border-color: #030303;
+.button-hover:hover {
+  background-color: rgba(229, 231, 235, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

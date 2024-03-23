@@ -7,6 +7,9 @@ import storage from "redux-persist/lib/storage";
 import persistStore from "redux-persist/es/persistStore";
 import callReducer from "./modals/CallSlice";
 import profileReducer from "./modals/profileSlice";
+import productSlice from "./products/productsSlice";
+import globalReducer from "./mode/mode";
+import customersReducers from "./customers/CustomersSlice";
 
 const rootReducer = combineReducers({
   signupModal: signupReducer,
@@ -14,6 +17,9 @@ const rootReducer = combineReducers({
   signinModal: signinReducer,
   callModal: callReducer,
   profileModal: profileReducer,
+  products: productSlice,
+  global: globalReducer,
+  customers: customersReducers,
 });
 const persistsConfig = {
   key: "root",

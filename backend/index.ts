@@ -3,6 +3,8 @@ import * as dotenv from "dotenv";
 import connectDB from "./utils/database";
 import authRoutes from "./routes/auth.route";
 import userRoutes from "./routes/user.route";
+import productRoutes from './routes/product.route';
+import customersRoutes from './routes/customer.route'
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -13,6 +15,9 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/customers', customersRoutes);
+
 
 app.use((err: any, req: any, res: any, next: any) => {
   const statusCode = err.statusCode || 500;
