@@ -26,6 +26,26 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: String,
   },
+  country: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  occupation: {
+    type: String,
+  },
+  transactions: {
+    type: [String],
+  },
+  role: {
+    type: String,
+    default: "user",
+  },
   createdAt: {
     type: Date,
     default: Date.now,

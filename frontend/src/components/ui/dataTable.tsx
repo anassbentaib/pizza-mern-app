@@ -59,14 +59,17 @@ export function DataTable<TData, TValue>({
           className="max-w-sm rounded-none"
         />
       </div>
-      <div className="border border-primaryColor text-primaryColor ">
+      <div className=" text-primaryColor bg-500 shadow-xl ">
         <Table>
           <TableHeader>
             {table.getHeaderGroups()?.map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className=" border-none">
                 {headerGroup.headers?.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-primaryColor">
+                    <TableHead
+                      key={header.id}
+                      className="text-primaryColor shadow-md bg-600 border-none "
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -79,12 +82,13 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
+          <TableBody className="border-none">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows?.map((row) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className=" border-none"
                 >
                   {row.getVisibleCells()?.map((cell) => (
                     <TableCell key={cell.id}>

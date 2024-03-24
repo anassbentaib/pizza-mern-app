@@ -4,17 +4,17 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const signup = async (req: any, res: any, next: any) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, country } = req.body;
 
-  if (!email || !password || !name) {
+  if (!email || !password || !name || !country) {
     return next(errorHandler(400, "All fields are required"));
   }
   try {
     const userExist = await User.findOne({ email: email });
-    const nameExist = await User.findOne({ name: name });
-    if (nameExist) {
-      return next(errorHandler(401, "the name already taken!"));
-    }
+    // const nameExist = await User.findOne({ name: name });
+    // if (nameExist) {
+    //   return next(errorHandler(401, "the name already taken!"));
+    // }
     if (userExist) {
       return next(errorHandler(401, "the email already taken!"));
     }
@@ -38,6 +38,7 @@ export const signup = async (req: any, res: any, next: any) => {
     const newUser = await User.create({
       email,
       name,
+      country,
       password: hashPassword,
     });
 

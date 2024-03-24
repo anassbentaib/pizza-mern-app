@@ -18,6 +18,12 @@ import {
   getCustomersStart,
   getCustomersSuccess,
 } from "@/redux/customers/CustomersSlice";
+import Geography from "./Geography/geography";
+import {
+  getGeographyFailure,
+  getGeographyStart,
+  getGeographySuccess,
+} from "@/redux/geography/geography";
 
 const AdminDashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -35,19 +41,23 @@ const AdminDashboardLayout = () => {
       dispatch(getProductFailure(error.message));
     }
   };
-  const fetchCustomers = async () => {
+
+  const fetchGeographies = async () => {
     try {
-      dispatch(getCustomersStart());
-      const customers = await axios.get("/api/customers/get-customers");
+      dispatch(getGeographyStart());
+      const customers = await axios.get("/api/geography");
       const data = await customers.data;
-      dispatch(getCustomersSuccess(data));
+      console.log("🚀 ~ fetchGeographies ~ data:", data);
+      dispatch(getGeographySuccess(data));
     } catch (error: any) {
-      dispatch(getCustomersFailure(error.message));
+      dispatch(getGeographyFailure(error.message));
     }
   };
+
   useEffect(() => {
-    fetchProducts();
-    fetchCustomers();
+    // fetchProducts();
+    // fetchCustomers();
+    fetchGeographies();
   }, [dispatch]);
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -69,7 +79,7 @@ const AdminDashboardLayout = () => {
         />
       </div>
       <main
-        className={`pb-10 bg-600 min-h-screen ${
+        className={`pb-10 bg-700 min-h-screen ${
           isSidebarOpen ? "md:pl-72" : "md:pl-0 "
         }`}
       >
@@ -80,7 +90,7 @@ const AdminDashboardLayout = () => {
         {tab === "dashboard" && <Dashboard />}
         {tab === "products" && <Products />}
         {tab === "customers" && <Customers />}
-
+        {tab === "geography" && <Geography />}
         {tab === "create-product" && <CreateProduct />}
       </main>
     </div>

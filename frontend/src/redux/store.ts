@@ -10,6 +10,7 @@ import profileReducer from "./modals/profileSlice";
 import productSlice from "./products/productsSlice";
 import globalReducer from "./mode/mode";
 import customersReducers from "./customers/CustomersSlice";
+import geographyReducers from "./geography/geography";
 
 const rootReducer = combineReducers({
   signupModal: signupReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   products: productSlice,
   global: globalReducer,
   customers: customersReducers,
+  geography: geographyReducers,
 });
 const persistsConfig = {
   key: "root",

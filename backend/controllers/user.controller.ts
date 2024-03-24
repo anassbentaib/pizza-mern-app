@@ -51,3 +51,14 @@ export const update = async (req: any, res: any, next: any) => {
     next(error);
   }
 };
+
+export const SignOut = async (req: any, res: any, next: any) => {
+  try {
+    res
+      .clearCookie("access_token")
+      .status(200)
+      .json("user has been signed out");
+  } catch (error) {
+    next(error);
+  }
+};

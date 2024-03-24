@@ -12,6 +12,10 @@ export const columns: ColumnDef<ProductColumn>[] = [
     header: "Id",
   },
   {
+    accessorKey: "_id",
+    header: "User ID",
+  },
+  {
     accessorKey: "name",
     header: "Name",
   },

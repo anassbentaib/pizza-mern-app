@@ -9,9 +9,23 @@ import Container from "../Container/Container";
 import { FaUserAlt } from "react-icons/fa";
 import useSigninModal from "../../hooks/useSigninModal";
 import useCallModal from "../../hooks/useCallModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { signoutSuccess } from "@/redux/user/userSlice";
+import axios from "axios";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const handleSignout = async () => {
+    try {
+      const res = await axios.post("/api/users/signout");
+      await res.data;
+
+      dispatch(signoutSuccess());
+      // window.location.assign("/sign-in");
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
   const signupModal = useSignupModal();
   const signinModal = useSigninModal();
   const callModal = useCallModal();
@@ -48,6 +62,7 @@ const Header = () => {
     {
       title: "Log out ",
       route: "",
+      onClick: handleSignout,
     },
   ];
 
@@ -91,7 +106,10 @@ const Header = () => {
                 className={`group p-2 justify-start cursor-pointer app__flex p-text`}
               >
                 <a href={`/${item.route}`}>
-                  <div className="flex items-center flex-1 px-1">
+                  <div
+                    className="flex items-center flex-1 px-1"
+                    onClick={item.onClick}
+                  >
                     {item.icon && (
                       <item.icon className="h-3 w-3 mr-2 brown-text" />
                     )}

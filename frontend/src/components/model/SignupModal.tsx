@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import axios from "axios";
 import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 import useSigninModal from "../../hooks/useSigninModal";
+import CountrySelect from "../Inputs/CountrySelect";
 
 const SignupModal = () => {
   const signupModal = useSignupModal();
@@ -22,13 +23,25 @@ const SignupModal = () => {
     handleSubmit,
     reset,
     formState: { errors },
+    setValue,
+    watch,
   } = useForm<FieldValues>({
     defaultValues: {
       name: "",
       email: "",
       password: "",
+      country: "",
     },
   });
+  const setCustomValue = (id: string, value: any) => {
+    setValue(id, value, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  };
+  const country = watch("country");
+
   const onToggle = useCallback(() => {
     signupModal.onClose();
     signinModal.onOpen();
@@ -36,8 +49,10 @@ const SignupModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setLoading(true);
     setErrorMessage(null);
+    const country = data?.country?.value;
+    const newData = await { ...data, country };
     try {
-      await axios.post("/api/auth/signup", data);
+      await axios.post("/api/auth/signup", newData);
 
       signupModal.onClose();
       reset();
@@ -75,6 +90,10 @@ const SignupModal = () => {
         icon
         message="Invalid email"
       />
+        <CountrySelect
+          value={country}
+          onChange={(value: any) => setCustomValue("country", value)}
+        />
       <Input
         id="password"
         text="Password"
