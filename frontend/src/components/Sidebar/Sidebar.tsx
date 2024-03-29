@@ -35,17 +35,20 @@ const Sidebar = ({ setIsSidebarOpen, isSidebarOpen }: SidebarProps) => {
         </div>
       </div>
       <div className="mt-3 mb-3">
-        {navItems.map(({ text, icon }) => {
+        {navItems.map(({ text, icon }, index) => {
           if (!icon) {
             return (
-              <h1 key={text} className="text-13 py-4 mx-7 text-yellow">
+              <h1
+                key={`${text}-${index}`}
+                className="text-13 py-4 mx-7 text-yellow"
+              >
                 {text}
               </h1>
             );
           }
           const lcText = text.toLowerCase();
           return (
-            <ul key={text}>
+            <ul key={`${text}-${index}`}>
               <a
                 onClick={() => {
                   navigate(`?tab=${lcText}`);

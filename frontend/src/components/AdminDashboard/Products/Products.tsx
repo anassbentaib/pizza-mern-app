@@ -1,10 +1,10 @@
 import Heading from "@/components/Heading/Heading";
-import Container from "../Container/Container";
+import Container from "../components/Container/Container";
 import { Button } from "@/components/ui/button";
 import { BiPlus } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import CardProduct from "../CardProduct/CardProduct";
+import CardProduct from "../components/Container/CardProduct/CardProduct";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const Products = () => {
@@ -15,7 +15,7 @@ const Products = () => {
     <Container>
       <div className="app_flex justify-between text-primaryColor ">
         <Heading
-          title={`Products (${products?.length || 0})`}
+          title={`PRODUCTS (${products?.length || 0})`}
           subTitle="Manage products for your store"
         />
         <Button
@@ -43,7 +43,7 @@ const Products = () => {
         ) : products?.length ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3  2xl:grid-cols-4 gap-7">
             {products.map((data: any) => (
-              <div key={data._id}>
+              <div key={data?.title}>
                 <CardProduct data={data} />
               </div>
             ))}

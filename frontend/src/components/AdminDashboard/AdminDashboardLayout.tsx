@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
-import AdminNavbar from "../AdminDashboard/AdminNavbar/adminNavbar";
+import AdminNavbar from "./components/AdminNavbar/adminNavbar";
 import { useEffect, useState } from "react";
 import Dashboard from "../AdminDashboard/Dashboard/Dashboard";
 import Products from "../AdminDashboard/Products/Products";
@@ -24,6 +24,15 @@ import {
   getGeographyStart,
   getGeographySuccess,
 } from "@/redux/geography/geography";
+import {
+  getSalesFailure,
+  getSalesStart,
+  getSalesSuccess,
+} from "@/redux/sales/SalesSlice";
+import Sales from "./Overview/Sales";
+import Daily from "./daily/daily";
+import Monthly from "./monthly/monthly";
+import BreakDown from "./breakDown/breakDown";
 
 const AdminDashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -42,12 +51,31 @@ const AdminDashboardLayout = () => {
     }
   };
 
+  const fetchSales = async () => {
+    try {
+      dispatch(getSalesStart());
+      const products = await axios.get("/api/sales/get-sales");
+      const data = await products.data;
+      dispatch(getSalesSuccess(data));
+    } catch (error: any) {
+      dispatch(getSalesFailure(error.message));
+    }
+  };
+  const fetchCustomers = async () => {
+    try {
+      dispatch(getCustomersStart());
+      const customers = await axios.get("/api/customers/get-customers");
+      const data = await customers.data;
+      dispatch(getCustomersSuccess(data));
+    } catch (error: any) {
+      dispatch(getCustomersFailure(error.message));
+    }
+  };
   const fetchGeographies = async () => {
     try {
       dispatch(getGeographyStart());
       const customers = await axios.get("/api/geography");
       const data = await customers.data;
-      console.log("🚀 ~ fetchGeographies ~ data:", data);
       dispatch(getGeographySuccess(data));
     } catch (error: any) {
       dispatch(getGeographyFailure(error.message));
@@ -55,9 +83,10 @@ const AdminDashboardLayout = () => {
   };
 
   useEffect(() => {
-    // fetchProducts();
-    // fetchCustomers();
+    fetchProducts();
+    fetchCustomers();
     fetchGeographies();
+    fetchSales();
   }, [dispatch]);
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -91,6 +120,10 @@ const AdminDashboardLayout = () => {
         {tab === "products" && <Products />}
         {tab === "customers" && <Customers />}
         {tab === "geography" && <Geography />}
+        {tab === "overview" && <Sales />}
+        {tab === "daily" && <Daily />}
+        {tab === "monthly" && <Monthly />}
+        {tab === "breakdown" && <BreakDown />}
         {tab === "create-product" && <CreateProduct />}
       </main>
     </div>

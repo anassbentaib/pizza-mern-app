@@ -1,6 +1,6 @@
 import { IoMenuSharp, IoMoonOutline, IoSettingsOutline } from "react-icons/io5";
-import SearchInput from "../../SearchInput/SearchInput";
-import { user_logo } from "../../../assets";
+import SearchInput from "../../../SearchInput/SearchInput";
+import { user_logo } from "../../../../assets";
 
 interface SidebarProps {
   setIsSidebarOpen: any;
@@ -16,7 +16,7 @@ const AdminNavbar = ({ setIsSidebarOpen, isSidebarOpen }: SidebarProps) => {
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         />
         <div className="w-full min-w-100 md:min-w-300">
-          <SearchInput id="search" placeholder="Search..."  />
+          <SearchInput id="search" placeholder="Search..." />
         </div>
       </div>
       <div className="app_flex text-primaryColor">

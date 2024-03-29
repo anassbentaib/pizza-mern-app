@@ -7,22 +7,19 @@ import productRoutes from "./routes/product.route";
 import customersRoutes from "./routes/customer.route";
 import cookieParser from "cookie-parser";
 import geographyRoutes from "./routes/geography.route";
-import overallStatRoutes from "./routes/overallStat.route"; 
-
+import salesRoutes from './routes/sales.route'
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-import { dataUser } from "./utils/data";
-import User from "./model/auth.model";
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/customers", customersRoutes);
 app.use("/api/geography", geographyRoutes);
-app.use("/api/overview", overallStatRoutes);
+app.use("/api/sales", salesRoutes);
 
 app.use((err: any, req: any, res: any, next: any) => {
   const statusCode = err.statusCode || 500;
@@ -42,6 +39,7 @@ const startServer = async () => {
       console.log(`server running on port : http://localhost:${PORT}`)
     );
     // User.insertMany(dataUser)
+    // OverallStat.insertMany(dataOverallStat)
   } catch (error) {
     console.log(error);
   }

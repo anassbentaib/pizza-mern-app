@@ -29,7 +29,7 @@ interface DataTableProps<TData, TValue> {
 
 export function DataTable<TData, TValue>({
   columns,
-  data,
+  data = [],
   searchKey,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -63,18 +63,18 @@ export function DataTable<TData, TValue>({
         <Table>
           <TableHeader>
             {table.getHeaderGroups()?.map((headerGroup) => (
-              <TableRow key={headerGroup.id} className=" border-none">
+              <TableRow key={headerGroup?.id} className=" border-none">
                 {headerGroup.headers?.map((header) => {
                   return (
                     <TableHead
-                      key={header.id}
+                      key={header?.id}
                       className="text-primaryColor shadow-md bg-600 border-none "
                     >
-                      {header.isPlaceholder
+                      {header?.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
+                            header?.column?.columnDef?.header,
+                            header?.getContext()
                           )}
                     </TableHead>
                   );
@@ -83,17 +83,17 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody className="border-none">
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows?.map((row) => (
+            {table.getRowModel()?.rows?.length ? (
+              table.getRowModel()?.rows?.map((row) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                   className=" border-none"
                 >
                   {row.getVisibleCells()?.map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell?.id}>
                       {flexRender(
-                        cell.column.columnDef.cell,
+                        cell.column.columnDef?.cell,
                         cell.getContext()
                       )}
                     </TableCell>

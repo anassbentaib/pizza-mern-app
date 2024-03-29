@@ -17,7 +17,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const handleSignout = async () => {
     try {
-      const res = await axios.post("/api/users/signout");
+      const res = await axios.post("/api/user/signout");
       await res.data;
 
       dispatch(signoutSuccess());

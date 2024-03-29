@@ -11,6 +11,7 @@ import productSlice from "./products/productsSlice";
 import globalReducer from "./mode/mode";
 import customersReducers from "./customers/CustomersSlice";
 import geographyReducers from "./geography/geography";
+import salesReducers from "./sales/SalesSlice";
 
 const rootReducer = combineReducers({
   signupModal: signupReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   products: productSlice,
   global: globalReducer,
   customers: customersReducers,
+  sales: salesReducers,
   geography: geographyReducers,
 });
 const persistsConfig = {
@@ -33,6 +35,7 @@ const persistedReducers = persistReducer(persistsConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducers,
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
 });

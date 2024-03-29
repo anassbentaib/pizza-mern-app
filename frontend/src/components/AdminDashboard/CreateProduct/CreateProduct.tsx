@@ -1,5 +1,5 @@
 import Heading from "@/components/Heading/Heading";
-import Container from "../Container/Container";
+import Container from "../components/Container/Container";
 import { FieldValues, useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
